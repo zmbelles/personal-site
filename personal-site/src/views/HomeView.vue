@@ -1,6 +1,8 @@
 <!-- src/views/Home.vue -->
 <template>
   <div>
+    <Navbar />
+
     <div class="education">
       <p>{{ almaMater }}</p>
       <p>{{ degree }}</p>
@@ -11,6 +13,7 @@
         class="alma-mater-logo"
       />
     </div>
+
     <div class="about-me">
       <p>About Me</p>
       <p>{{ aboutMe }}</p>
@@ -19,6 +22,7 @@
         <a :href="githubProfile" target="_blank">zmbelles</a>
       </p>
     </div>
+
     <header>
       <h1>{{ fullName }}</h1>
       <img
@@ -34,25 +38,25 @@
     </header>
 
     <main>
-      <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects-container">
-          <Project
-            v-for="(project, index) in projects"
-            :key="index"
-            :project="project"
-          />
-        </div>
-      </section>
+      <h2>Projects</h2>
+      <div class="projects-container">
+        <Project
+          v-for="(project, index) in projects"
+          :key="index"
+          :project="project"
+        />
+      </div>
     </main>
   </div>
 </template>
 
 <script>
+import Navbar from "@/components/NavbarComponent.vue";
 import Project from "@/components/ProjectComponent.vue";
 
 export default {
   components: {
+    Navbar,
     Project,
   },
   data() {
@@ -79,19 +83,25 @@ export default {
             "Connect with your Facebook, Instagram, and TikTok friends all in one place \nLanguages: Typescript, JavaScript\nFrameworks: MongoDB, Next.js, tailwind.css",
         },
         {
-          title: "Inventory & Emplyee Database",
+          title: "Inventory & Employee Database",
           link: "https://github.com/zmbelles/GroceryDB",
           description:
             "simulates a grocery store admin database that keeps track of the store's employees, inventory, discounts, shipment status, reward members, and departments.\nLanguages: \
             Java, MySQL",
+        },
+        {
+          title: "Chess Piece Image Recognition",
+          link: "https://github.com/zmbelles/Chess-image-classifier-CNN",
+          description:
+            "using a deep CNN model on a chess set, classify which type of piece the image is with a 89% accuracy.",
         },
         // Add more projects as necessary
       ],
     };
   },
 };
-</script>
 
+</script>
 <style scoped>
 body {
   font-family: "Helvetica", sans-serif;
@@ -108,7 +118,7 @@ body {
 
 .education {
   position: fixed;
-  top: 80px;
+  top: 125px;
   right: 20px;
   text-align: center;
   z-index: 100;
@@ -164,7 +174,7 @@ main {
 }
 .about-me {
   position: fixed;
-  top: 120px;
+  top: 180px;
   left: 20px;
   text-align: left;
   z-index: 100;
@@ -173,7 +183,7 @@ main {
   padding: 1rem;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   color: #ffffff; /* White */
-  max-width: 30%; /* Adjust this value according to your needs */
+  max-width: 30%;
   word-wrap: break-word;
 }
 .projects-container {
@@ -181,5 +191,9 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
+  background-color: #90a1d8; /* Slightly darker blue */
+  border-radius: 10px; /* Rounded edges */
+  padding: 2rem; /* Add some padding for better appearance */
+  margin-top: 1rem; /* Add some margin for better appearance */
 }
 </style>
